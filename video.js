@@ -566,6 +566,11 @@ VideoJS.player.extend({
             <span></span><span></span><span></span><span></span>
           </div>
         </div>
+        <div class="vjs-info-button">
+          <div>
+            <span></span><span></span><span></span>
+          </div>
+        </div>
       </div>
     */
 
@@ -636,6 +641,14 @@ VideoJS.player.extend({
     });
     this.controls.appendChild(this.fullscreenControl);
     this.activateElement(this.fullscreenControl, "fullscreenToggle");
+    
+    // Crete the info control
+    this.infoButton = _V_.createElement("div", {
+      className: "vjs-info-button",
+      innerHTML: "<div><span></span><span></span><span></span></div>"
+    });
+    this.controls.appendChild(this.infoButton);
+    this.activateElement(this.infoButton, "infoOption");
   },
   /* Poster Image
   ================================================================================ */
@@ -915,6 +928,25 @@ VideoJS.player.extend({
   },
 
   enterFullWindow: function(){
+    // Add itheora3-fork command to change the element itheora3-fork
+    if(window.parent != window.self){
+	this.parentObject = window.parent.document.getElementById(window.name);
+	// Before save css attributes
+	this.parentObject.OrigWidth = this.parentObject.style.width;
+	this.parentObject.OrigHeight = this.parentObject.style.height;
+	this.parentObject.position = this.parentObject.style.position;
+	this.parentObject.left = this.parentObject.style.left;
+	this.parentObject.top = this.parentObject.style.top;
+	this.parentObject.padding = this.parentObject.style.padding;
+	// Add new attributes
+	this.parentObject.style.width = '100%';
+	this.parentObject.style.height = '100%';
+	this.parentObject.style.position = 'fixed';
+	this.parentObject.style.left = '0';
+	this.parentObject.style.top = '0';
+	this.parentObject.style.padding = '0';
+    }
+
     this.videoIsFullScreen = true;
     // Storing original doc overflow value to return to when fullscreen is off
     this.docOrigOverflow = document.documentElement.style.overflow;
@@ -932,6 +964,16 @@ VideoJS.player.extend({
 
   // Turn off fullscreen (window) mode
   exitFullWindow: function(){
+    // Resize itheora3-fork object
+    if(parent.window != window.self){
+	this.parentObject.style.width = this.parentObject.OrigWidth;
+	this.parentObject.style.height = this.parentObject.OrigHeight;
+	this.parentObject.style.position = this.parentObject.position;
+	this.parentObject.style.left = this.parentObject.left;
+	this.parentObject.style.top = this.parentObject.top;
+	this.parentObject.style.padding = this.parentObject.padding;
+    }
+
     this.videoIsFullScreen = false;
     document.removeEventListener("keydown", this.fullscreenOnEscKey, false);
     window.removeEventListener("resize", this.fullscreenOnWindowResize, false);
@@ -1393,6 +1435,32 @@ VideoJS.player.newBehavior("fullscreenToggle", function(element){
       if (event.keyCode == 27) {
         this.exitFullScreen();
       }
+    }
+  }
+);
+/* Info Option Behaviors
+================================================================================ */
+VideoJS.player.newBehavior("infoOption", function(element){
+    _V_.addListener(element, "click", this.onInfoOptionClick.context(this));
+    _V_.addListener(element, "mouseout", this.hideInfoOption.context(this));
+  },{
+    // When the user clicks on the info button
+    onInfoOptionClick: function(event){
+	if(this.linksFallback.style.display == "none"){
+	    this.showLinksFallback();
+	    _V_.addClass(this.linksFallback, "vjs-info");
+	    _V_.addClass(this.box, "vjs-info-button-press");
+	} else {
+	    this.removeInfoOption();
+	}
+    },
+    hideInfoOption: function(event){
+	setTimeout(this.removeInfoOption.context(this), 10000);
+    },
+    removeInfoOption: function(event){
+	this.hideLinksFallback();
+	_V_.removeClass(this.linksFallback, "vjs-info");
+	_V_.removeClass(this.box, "vjs-info-button-press");
     }
   }
 );

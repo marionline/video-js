@@ -21,10 +21,11 @@ Version 2.0.0
 
 /* Placement of Control Items */
 .tube-css .vjs-controls > div.vjs-play-control       { width: 25px; left: 0; }
-.tube-css .vjs-controls > div.vjs-progress-control   { left: 102px; right: 83px; }
+.tube-css .vjs-controls > div.vjs-progress-control   { left: 102px; right: 109px; }
 .tube-css .vjs-controls > div.vjs-time-control       { width: 75px; left: 27px; }
-.tube-css .vjs-controls > div.vjs-volume-control     { width: 50px; right: 30px; }
-.tube-css .vjs-controls > div.vjs-fullscreen-control { width: 30px; right: 0; }
+.tube-css .vjs-controls > div.vjs-volume-control     { width: 50px; right: 57px; }
+.tube-css .vjs-controls > div.vjs-fullscreen-control { width: 30px; right: 25px; }
+.tube-css .vjs-controls > div.vjs-info-button    { width: 25px; right: 0;   }
 
 /* Removing borders on time & progress to join them */
 .tube-css .vjs-controls > div.vjs-progress-control { border-left: none; }
@@ -83,6 +84,19 @@ Version 2.0.0
 .tube-css .vjs-fullscreen-control:hover div span:nth-child(1), .tube-css .vjs-fullscreen-control:hover div span:nth-child(2), .tube-css.vjs-fullscreen .vjs-fullscreen-control:hover div span:nth-child(3), .tube-css.vjs-fullscreen .vjs-fullscreen-control:hover div span:nth-child(4) {
   border-top-color: #CF1A1A;
 }
+/* Download Button
+-------------------------------------------------------------------------------- */
+/* Drawing the Download Button icon */
+.vjs-info-button-press .vjs-info-button div span:nth-child(2) {
+    border-color: #333;
+}
+.tube-css .vjs-info-button div span {
+    border-color: #333;
+}
+.tube-css .vjs-info-button:hover div span {
+    border-color: #CF1A1A;
+}
+
 
 /* Big Play Button (at start)
 ---------------------------------------------------------*/

@@ -94,10 +94,11 @@ so you can upgrade to newer versions easier. */
    - Rigth side of progress bar, use right & width
    - Expand with the video (like progress bar) use left & right */
 .vjs-controls > div.vjs-play-control       { left: 5px;   width: 25px;  }
-.vjs-controls > div.vjs-progress-control   { left: 35px;  right: 165px; } /* Using left & right so it expands with the width of the video */
-.vjs-controls > div.vjs-time-control       { width: 75px; right: 90px;  } /* Time control and progress bar are combined to look like one */
-.vjs-controls > div.vjs-volume-control     { width: 50px; right: 35px;  }
-.vjs-controls > div.vjs-fullscreen-control { width: 25px; right: 5px;   }
+.vjs-controls > div.vjs-progress-control   { left: 35px;  right: 195px; } /* Using left & right so it expands with the width of the video */
+.vjs-controls > div.vjs-time-control       { width: 75px; right: 120px;  } /* Time control and progress bar are combined to look like one */
+.vjs-controls > div.vjs-volume-control     { width: 50px; right: 65px;  }
+.vjs-controls > div.vjs-fullscreen-control { width: 25px; right: 35px;   }
+.vjs-controls > div.vjs-info-button    { width: 25px; right: 5px;   }
 
 /* Removing curved corners on progress control and time control to join them. */
 .vjs-controls > div.vjs-progress-control {
@@ -203,9 +204,71 @@ so you can upgrade to newer versions easier. */
 .vjs-fullscreen .vjs-fullscreen-control div span:nth-child(3) { border: none; border-top: 6px solid #fff; border-left: 6px solid rgba(0,0,0,0); }
 .vjs-fullscreen .vjs-fullscreen-control div span:nth-child(4) { border: none; border-top: 6px solid #fff; border-right: 6px solid rgba(0,0,0,0); }
 
+/* Download Button
+-------------------------------------------------------------------------------- */
+.vjs-info-button { cursor: pointer !important; }
+.vjs-info-button div {
+  padding: 0; text-align: left; vertical-align: top; cursor: pointer !important; 
+  margin: 5px 0 0 5px; 
+  width: 20px; height: 20px;
+}
+/* Drawing the Download Button icon */
+.vjs-info-button div span { float: left; margin: 0; padding: 0; font-size: 0; line-height: 0; width: 0; text-align: left; vertical-align: bottom; }
+.vjs-info-button div span:nth-child(1) {
+  height: 4px;
+  margin-top: 5px;
+  margin-left: 1px;
+  border-top: 0px; border-left: 5px solid #fff; border-bottom: 0px;
+}
+.vjs-info-button div span:nth-child(3) {
+  height: 4px;
+  margin-top: 5px;
+  margin-left: 0px;
+  border-top: 0px; border-left: 5px solid #fff; border-bottom: 0px;
+}
+.vjs-info-button div span:nth-child(2) { 
+  height: 14px;
+  margin-top: 0px;
+  border-top: 0px; border-left: 4px solid #fff; border-bottom: 0px;
+}
+.vjs-info-button-press .vjs-info-button div span:nth-child(2) {
+  height: 4px;
+  margin-top: 5px;
+  border-top: 0px; border-left: 4px solid #fff; border-bottom: 0px;
+}
+
 /* Download Links - Used for browsers that don't support any video.
 ---------------------------------------------------------*/
-.vjs-no-video { font-size: small; line-height: 1.5; }
+.vjs-no-video { font-size: small; line-height: 1; }
+
+.vjs-info {
+    bottom: 25px;
+    right: 5px;
+    position: absolute;
+    display: block;
+    padding: 10px;
+    background: #fff;
+    z-index: 1003;
+    border: 3px solid #0B151A; opacity: 0.9;
+    -webkit-border-radius: 20px; -moz-border-radius: 20px; border-radius: 20px;
+    width: 380px;
+}
+.vjs-info a {
+    color: #20162B;
+    font-style: italic;
+}
+.vjs-info span {
+    float: right;
+    display: inline-block;
+    width: 360px;
+    border: 1px inset;
+    padding: 3px;
+    -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
+}
+.vjs-info small {
+    margin-top: 5px;
+    float: right;
+}
 
 /* Big Play Button (at start)
 ---------------------------------------------------------*/

@@ -19,6 +19,7 @@ Version 2.0.0
 /* Top Level Items */
 .hu-css .vjs-controls > div.vjs-play-control,
 .hu-css .vjs-controls > div.vjs-volume-control,
+.hu-css .vjs-controls > div.vjs-info-button,
 .hu-css .vjs-controls > div.vjs-fullscreen-control {
   bottom: 20px; height: 27px;
 }
@@ -31,8 +32,9 @@ Version 2.0.0
 .hu-css .vjs-controls > div.vjs-play-control       { width: 33px; left: 0px; }
 .hu-css .vjs-controls > div.vjs-progress-control   { width: left: 84px; right: 0; }
 .hu-css .vjs-controls > div.vjs-time-control       { width: 84px; left: 0px; }
-.hu-css .vjs-controls > div.vjs-volume-control     { width: 43px; right: 44px; }
-.hu-css .vjs-controls > div.vjs-fullscreen-control { width: 43px; right: 0px; }
+.hu-css .vjs-controls > div.vjs-volume-control     { width: 43px; right: 76px; }
+.hu-css .vjs-controls > div.vjs-fullscreen-control { width: 43px; right: 35px; }
+.hu-css .vjs-controls > div.vjs-info-button    { width: 35px; right: 0px; }
 
 /* Play/Pause
 -------------------------------------------------------------------------------- */
@@ -91,6 +93,16 @@ Version 2.0.0
 .hu-css.vjs-fullscreen .vjs-fullscreen-control div span:nth-child(2) { border: none; border-bottom: 4px solid #fff; border-right: 4px solid rgba(0,0,0,0); }
 .hu-css.vjs-fullscreen .vjs-fullscreen-control div span:nth-child(3) { border: none; border-top: 4px solid #fff; border-left: 4px solid rgba(0,0,0,0); }
 .hu-css.vjs-fullscreen .vjs-fullscreen-control div span:nth-child(4) { border: none; border-top: 4px solid #fff; border-right: 4px solid rgba(0,0,0,0); }
+
+/* Download Button
+-------------------------------------------------------------------------------- */
+.hu-css .vjs-info-button div {
+ margin: 8px 0 0 0px; padding-left: 10px; height: 13px; border-left: 1px solid #555; 
+}
+/* Drawing the Download Button icon */
+.hu-css .vjs-info-button:hover {
+    background-color: #000; 
+}
 
 /* Big Play Button (at start)
 ---------------------------------------------------------*/
